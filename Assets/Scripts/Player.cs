@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Prefabs")]
+    public GameObject Root;
+
     bool isMain = false;
     public bool flipControls = false;
     public Rigidbody2D rig2d;
@@ -20,6 +23,7 @@ public class Player : MonoBehaviour
 
     public void Split() {
         playerMovement.Split(this);
+        SpawnSmallRoots();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -27,5 +31,11 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
             Split();
         }
+    }
+
+    void SpawnSmallRoots() {
+        GameObject newGo = Instantiate(Root, playerMovement.transform);
+        newGo.transform.position = transform.position;
+        newGo.transform.eulerAngles = new Vector3(0, 0, 180);
     }
 }

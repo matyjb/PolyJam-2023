@@ -74,7 +74,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Time: 9999
   m_Parameters:
     serializedVersion: 3
@@ -114,8 +114,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
+      key0: {r: 1, g: 0.7929265, b: 0.504717, a: 1}
+      key1: {r: 1, g: 0.68423957, b: 0.3254717, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -162,10 +162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f5cd258fe4a4b428b6d197adc80512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLength: 20
+  maxLength: 4
   spawnAnotherChance: 0.01
   minSegmentLength: 1
-  maxSegmentLength: 5
+  maxSegmentLength: 1
   newBranchAngle: 30
   anglePerSecond: 50
   growthSpeed: 5
