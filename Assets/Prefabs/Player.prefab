@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495127, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.72
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495127, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495127, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -123,20 +123,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1455692582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5670929293594271734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 935bff136f6db465cb85ebb51dae855b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.8
-  rotationSpeed: 2
 --- !u!58 &5247158894898001998
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -153,3 +139,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
+--- !u!114 &7631070112981038608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5670929293594271734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7625df46fb14f496c8507820b2162e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

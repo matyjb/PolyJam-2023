@@ -3,18 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-    [SerializeField]
-    private float speed;
 
-    [SerializeField]
-    private float rotationSpeed;
+    [Header("Prefabs")]
+    public GameObject playerPrefab;
+
+    [Header("Settings")]
+    public float speed;
+    public float rotationSpeed;
+    public float minRotation = 270 - 70;
+    public float maxRotation = 270 + 70;
+
+    [Header("Components")]
+    public Transform playerSpawnPoint;
 
     float _horizontalInput;
-    float _verticalInput;
-    Rigidbody2D _rb2d;
+    //float _verticalInput;
+    List<Player> players = new List<Player>();
+
+
 
     private void Awake() {
-        _rb2d = GetComponent<Rigidbody2D>();
+        GameObject newGo = Instantiate(playerPrefab, playerSpawnPoint);
+        Player player = newGo.GetComponent<Player>();
+        player.Setup(true, this);
+        players.Add(player);
     }
 
     void Update() {
@@ -22,22 +34,36 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        //MovePlayer();
-        _rb2d.velocity = transform.right * speed;
-        RotatePlayer();
+        foreach (var player in players) {
+            player.rig2d.velocity = player.transform.right * speed;
+            RotatePlayer(player);
+        }
     }
 
     void GetPlayerInput() {
         _horizontalInput = Input.GetAxisRaw("Horizontal");
-        _verticalInput = Input.GetAxisRaw("Vertical");
+        //_verticalInput = Input.GetAxisRaw("Vertical");
     }
 
-    void MovePlayer() {
-        _rb2d.velocity = transform.right * Mathf.Clamp01(_verticalInput) * speed;
-    }
-
-    void RotatePlayer() {
+    void RotatePlayer(Player player) {
         float rotation = -_horizontalInput * rotationSpeed;
-        transform.Rotate(Vector3.forward * rotation);
+        if (player.flipControls)
+            rotation *= -1;
+        player.transform.Rotate(Vector3.forward * rotation);
+        Vector3 rotationFinal = player.transform.eulerAngles;
+        rotationFinal.z = Mathf.Clamp(rotationFinal.z, minRotation, maxRotation);
+        player.transform.eulerAngles = rotationFinal;
+    }
+
+    public void Split(Player oldPlayer) {
+        float playerRotation = oldPlayer.transform.eulerAngles.z - 270;
+        Debug.Log("Split!");
+        GameObject newGo = Instantiate(playerPrefab);
+        newGo.transform.position = oldPlayer.transform.position;
+        Player player = newGo.GetComponent<Player>();
+        player.flipControls = true;
+        player.Setup(false, this);
+        players.Add(player);
+        newGo.transform.eulerAngles = new Vector3(0, 0, 270 - playerRotation);
     }
 }
