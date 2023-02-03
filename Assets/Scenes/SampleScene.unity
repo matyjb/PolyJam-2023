@@ -575,11 +575,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5670929293594271734, guid: 68ce1fbb49f0e4a3b8e89eacf53e957b, type: 3}
-  speed: 0.8
-  rotationSpeed: 2
+  speed: 1.3
+  rotationSpeed: 3
   minRotation: 200
   maxRotation: 340
   playerSpawnPoint: {fileID: 2059739662}
+  virtualCamera: {fileID: 1147452964}
 --- !u!4 &1204509768
 Transform:
   m_ObjectHideFlags: 0

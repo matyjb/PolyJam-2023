@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 
     [Header("Components")]
     public Transform playerSpawnPoint;
+    public Cinemachine.CinemachineVirtualCamera virtualCamera;
 
     float _horizontalInput;
     //float _verticalInput;
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour {
         Player player = newGo.GetComponent<Player>();
         player.Setup(true, this);
         players.Add(player);
+        virtualCamera.Follow = newGo.transform;
     }
 
     void Update() {
