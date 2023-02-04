@@ -8,7 +8,6 @@ public class LandManager : MonoBehaviour
     public Color color;
     public Color multiplyColor;
     public Color grassColor;
-    public bool isEvil = false;
     public float darkerColorAmount = 10;
 
     [Header("Components")]
@@ -16,7 +15,14 @@ public class LandManager : MonoBehaviour
     public SpriteRenderer trees2;
     public SpriteRenderer grass;
     public SpriteRenderer bush;
+    public Transform alien2;
+
+    [Header("Evil")]
     public GameObject evilGo;
+    public GameObject notEvilAlien1;
+    public GameObject evilAlien1;
+    public GameObject notEvilAlien2;
+    public GameObject evilAlien2;
 
     private void Start() {
         trees1.color = color;
@@ -24,7 +30,16 @@ public class LandManager : MonoBehaviour
         trees2.color = darkerColor;
         bush.color = darkerColor;
         grass.color = (grassColor + color) / 2;
+        alien2.LeanMoveLocalX(-6.5f, 4f);
+        ChangeEvil(false);
+    }
+
+    public void ChangeEvil(bool isEvil) {
         evilGo.SetActive(isEvil);
+        evilAlien1.SetActive(isEvil);
+        notEvilAlien1.SetActive(!isEvil);
+        evilAlien2.SetActive(isEvil);
+        notEvilAlien2.SetActive(!isEvil);
     }
 
     Color DarkenColor(Color color) {
