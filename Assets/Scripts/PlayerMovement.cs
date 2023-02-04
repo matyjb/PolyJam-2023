@@ -37,7 +37,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private void FixedUpdate() {
         foreach (var player in players) {
-            player.rig2d.velocity = player.transform.right * speed;
+            float sp = player.isMain ? speed : speed * 0.8f;
+            player.rig2d.velocity = player.transform.right * sp;
             RotatePlayer(player);
         }
     }
@@ -51,6 +52,10 @@ public class PlayerMovement : MonoBehaviour {
         float rotation = -_horizontalInput * rotationSpeed;
         if (player.flipControls)
             rotation *= -1;
+        if (!player.isMain) {
+            rotation *= player.rotationSpeed;
+            rotation += player.fakeRotate;
+        }
         player.transform.Rotate(Vector3.forward * rotation);
         Vector3 rotationFinal = player.transform.eulerAngles;
         rotationFinal.z = Mathf.Clamp(rotationFinal.z, minRotation, maxRotation);
