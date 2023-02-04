@@ -13,6 +13,17 @@ public class Player : MonoBehaviour {
     public Rigidbody2D rig2d;
     PlayerMovement playerMovement;
 
+    [Header("Trails")]
+    public TrailRenderer upperTrail;
+    public TrailRenderer belowTrail;
+    public GameObject tunnelTrail;
+
+    [Header("Settings")]
+    public Material upperTrailMain;
+    public Material belowTrailMain;
+    public Material upperTrailNonMain;
+    public Material belowTrailNonMain;
+
     // Fake rotate
     float fakeRotateTime = 0;
     float nextFakeRotateStart;
@@ -26,6 +37,8 @@ public class Player : MonoBehaviour {
     private void Update() {
         if (isMain)
             return;
+
+        // Fake rotate
         fakeRotate = 0;
         fakeRotateTime += Time.deltaTime;
         if (fakeRotateTime > nextFakeRotateStart) {
@@ -35,7 +48,6 @@ public class Player : MonoBehaviour {
             fakeRotateTime = 0;
             QueueNewFakeRotate();
         }
-        Debug.Log(fakeRotateTime + "; " + nextFakeRotateStart);
     }
 
     public void Setup(bool isMain, PlayerMovement playerMovement) {
@@ -44,6 +56,12 @@ public class Player : MonoBehaviour {
         if (!isMain) {
             QueueNewFakeRotate();
             rotationSpeed = Random.Range(0.8f, 1.3f);
+            upperTrail.material = upperTrailNonMain;
+            belowTrail.material = belowTrailNonMain;
+            tunnelTrail.SetActive(true);
+            upperTrail.widthMultiplier *= 0.5f;
+            belowTrail.widthMultiplier *= 0.5f;
+            tunnelTrail.GetComponent<TrailRenderer>().widthMultiplier *= 0.5f;
         }
     }
 
