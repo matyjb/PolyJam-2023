@@ -151,3 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7625df46fb14f496c8507820b2162e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Root: {fileID: 4327142040490836359, guid: 1bd4399d6008f4d4e9456c9a7fb8f753, type: 3}
+  flipControls: 0
+  rig2d: {fileID: 0}
