@@ -57,7 +57,7 @@ public class RootGeneratorController : MonoBehaviour
 
             RootGeneratorController child = Instantiate(this,transform.parent);
             child.transform.Rotate(new Vector3(0,0,newBranchAngle/2));
-            transform.Rotate(new Vector3(0, 0, -newBranchAngle/2));
+            transform.Rotate(new Vector3(0, 0, -newBranchAngle/2)); 
 
             child.GetComponent<TrailRenderer>().widthMultiplier *= Mathf.Max(0.02f,1 - rootLen / maxLength);
             child.angleSpeed = Random.Range(child.angleSpeed - child.angleSpeed / 4, child.angleSpeed + child.angleSpeed / 4);
