@@ -251,6 +251,10 @@ PrefabInstance:
       value: 999
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495126, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846367573672495126, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_Parameters.textureMode
       value: 1
       objectReference: {fileID: 0}
@@ -606,11 +610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495127, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.77
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495127, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495127, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_LocalPosition.z
