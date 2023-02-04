@@ -685,8 +685,16 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: pickupChances.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: pickupChances.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: pickupChances.Array.data[2]
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: fakePlayerPickupChancePerSecond

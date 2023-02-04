@@ -49,12 +49,13 @@ public class ProximityPickupsGenerator : MonoBehaviour {
     List<GameObject> GetPickupsFurther() {
         return PickupManager.instance.pickupsOnScene.Where(element => {
             float distance = Vector3.Distance(element.transform.position, transform.position);
-            return distance <= maxRadius && distance >= minRadius;
+            return distance <= maxRadius && distance >= minRadius
+            && transform.position.y > element.gameObject.transform.position.y;
         }).ToList();
     }
 
     private void SpawnPickup(GameObject pickup, bool ignoreMinRadius = false) {
-        float distance = Random.Range(ignoreMinRadius ? 2f : minRadius, maxRadius);
+        float distance = Random.Range(ignoreMinRadius ? 10f : minRadius, maxRadius);
         float angle = Random.Range(minAngle, maxAngle);
 
         Vector3 spawnPoint = Helpers.RadianToCartesianCoords(distance, angle);
