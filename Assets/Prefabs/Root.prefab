@@ -54,7 +54,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 383f9e42fa7cb4b3c855324929f1ceb5, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,7 +78,7 @@ TrailRenderer:
   m_Time: 9999
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.105467424
+    widthMultiplier: 0.3
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -114,8 +114,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.7929265, b: 0.504717, a: 1}
-      key1: {r: 1, g: 0.68423957, b: 0.3254717, a: 1}
+      key0: {r: 0.21568629, g: 0.21568629, b: 0.2627451, a: 1}
+      key1: {r: 0.21568629, g: 0.21568629, b: 0.2627451, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -162,13 +162,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f5cd258fe4a4b428b6d197adc80512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLength: 1.5
+  maxLength: 5
   spawnAnotherChance: 0.01
   minSegmentLength: 0.2
-  maxSegmentLength: 0.3
-  newBranchAngle: 30
-  anglePerSecond: 86
-  growthSpeed: 0.5
+  maxSegmentLength: 1
+  newBranchAngle: 45
+  anglePerSecond: 100
+  growthSpeed: 1
   angleSpeed: 2
-  maxAngle: 180
+  maxAngle: 200
   rootLen: 0
