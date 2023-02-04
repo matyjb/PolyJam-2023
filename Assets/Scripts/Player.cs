@@ -87,7 +87,11 @@ public class Player : MonoBehaviour {
             if (withDestroy)
                 PickupManager.instance.DestroyPickup(pickup);
             Split();
+        } else if(pickup.CompareTag("rock")) {
+            Debug.Log("YOU ARE DEAD");
         }
+
+
     }
 
     void SpawnSmallRoots() {
