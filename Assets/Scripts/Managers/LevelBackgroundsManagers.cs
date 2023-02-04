@@ -14,6 +14,7 @@ public class LevelBackgroundsManagers : MonoBehaviour
     public Sprite[] randomBackgroundNext2;
     public Sprite[] finish;
     public Sprite[] randomElements;
+    public GameObject corePrefab;
 
     private void Start() {
         SpawnBackgrounds();
@@ -39,6 +40,10 @@ public class LevelBackgroundsManagers : MonoBehaviour
             spriteRenderer.color = new Color(value, value, value);
             spriteRenderer.sortingOrder = -80 - i;
             SpawnRandomElements(newGo.transform, i);
+
+            if (i == 5) {
+                GameObject newGo2 = Instantiate(corePrefab, newGo.transform);
+            }
         }
         
     }
@@ -58,6 +63,10 @@ public class LevelBackgroundsManagers : MonoBehaviour
             spriteRenderer.sprite = randomElements[Random.Range(0, randomElements.Length)];
             spriteRenderer.sortingOrder = -70;
         }
+    }
+
+    void SpawnCore() {
+
     }
 
 }

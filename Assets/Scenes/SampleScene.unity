@@ -765,6 +765,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0e545186192b446a8b73e5d99526869f, type: 3}
   - {fileID: 21300000, guid: ff9cf6753a94d4e5d976e6af8e2eea91, type: 3}
   - {fileID: 21300000, guid: d21e0fb38efd54cc981202c286d3d0cb, type: 3}
+  corePrefab: {fileID: 8748620612860295094, guid: 0380819eb518d4e5aa07dd94b8590e35, type: 3}
 --- !u!1 &940976093 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8663354785553387227, guid: bba9cef5c49a7410b81d6894abe1dcc7, type: 3}
