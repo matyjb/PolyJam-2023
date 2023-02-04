@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f5cd258fe4a4b428b6d197adc80512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLength: 5
-  spawnAnotherChance: 0.01
+  maxLength: 3
+  spawnAnotherChance: 0.005
   minSegmentLength: 0.2
   maxSegmentLength: 1
   newBranchAngle: 45

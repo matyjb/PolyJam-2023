@@ -518,6 +518,10 @@ PrefabInstance:
       propertyPath: upperTrailNonMain
       value: 
       objectReference: {fileID: 2100000, guid: 017689c4cef774060b6a64d2f93b7f16, type: 2}
+    - target: {fileID: 2686740407525751392, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: smallRootsSpawnChancePerSecond
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495113, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_Name
       value: Player
