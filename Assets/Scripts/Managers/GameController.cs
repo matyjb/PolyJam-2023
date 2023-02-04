@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
                 break;
             case GameModes.FirstPlanet:
                 virtualCamera.Follow = startScenePosition;
-                startScenePosition.LeanMoveLocalY(6.5f, 3f).setOnComplete(() => {
+                startScenePosition.LeanMoveLocalY(6.4f, 3f).setOnComplete(() => {
                     playerMovement.SpawnFirstRoot();
                 });
                 rootBall.LeanMove(new Vector3(0, 1.35f, 0), 0.4f).setEaseInCirc().delay = 2.8f;

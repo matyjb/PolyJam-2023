@@ -62,7 +62,9 @@ public class Player : MonoBehaviour {
             QueueNewFakeRotate();
             rotationSpeed = Random.Range(0.8f, 1.3f);
             upperTrail.material = upperTrailNonMain;
+            upperTrail.sortingOrder = -2;
             belowTrail.material = belowTrailNonMain;
+            belowTrail.sortingOrder = -3;
             tunnelTrail.SetActive(true);
             upperTrail.widthMultiplier *= 0.5f;
             belowTrail.widthMultiplier *= 0.5f;
