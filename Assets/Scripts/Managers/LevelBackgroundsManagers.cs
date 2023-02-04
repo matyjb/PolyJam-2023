@@ -13,6 +13,7 @@ public class LevelBackgroundsManagers : MonoBehaviour
     public Sprite randomBackgroundsFirst;
     public Sprite[] randomBackgroundNext2;
     public Sprite[] finish;
+    public Sprite[] randomElements;
 
     private void Start() {
         SpawnBackgrounds();
@@ -37,8 +38,26 @@ public class LevelBackgroundsManagers : MonoBehaviour
                 value = Random.Range(0.9f - i * (0.05f), 1f - i * (0.05f));
             spriteRenderer.color = new Color(value, value, value);
             spriteRenderer.sortingOrder = -80 - i;
+            SpawnRandomElements(newGo.transform, i);
         }
         
+    }
+
+    void SpawnRandomElements(Transform tran, int i) {
+        if (i > 3)
+            return;
+
+        float basePosition = firstYmove + (i * nextYMove);
+        int itemsToSpawn = Random.Range(3, 8);
+        for (int j = 0; j < itemsToSpawn; j++) {
+            GameObject newGo = new GameObject();
+            newGo.transform.SetParent(tran);
+            newGo.transform.position = new Vector3(Random.Range(-8f, 8f), Random.Range(basePosition - 9, basePosition), 0);
+            newGo.transform.eulerAngles = new Vector3(0, 0, Random.Range(-15f, 15f));
+            SpriteRenderer spriteRenderer = newGo.AddComponent<SpriteRenderer>();
+            spriteRenderer.sprite = randomElements[Random.Range(0, randomElements.Length)];
+            spriteRenderer.sortingOrder = -70;
+        }
     }
 
 }
