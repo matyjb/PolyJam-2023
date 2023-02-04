@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - splitPowerup
+  - rock
+  - core
+  - energy
   layers:
   - Default
   - TransparentFX

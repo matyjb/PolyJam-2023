@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController instance;
+    private void Awake() {
+        instance = this;
+    }
+
     [Header("Settings")]
     public GameModes gameMode;
 

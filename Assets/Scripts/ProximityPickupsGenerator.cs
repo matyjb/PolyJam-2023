@@ -8,6 +8,8 @@ public class ProximityPickupsGenerator : MonoBehaviour {
     public float fakePlayerPickupChancePerSecond = 0.1f;
     public float minRadius = 5;
     public float maxRadius = 10;
+    public float minAngle = 0;
+    public float maxAngle = 360;
     public List<GameObject> pickups = new List<GameObject>();
     public List<int> pickupChances = new List<int>();
     public int maxPickupsInProximity = 10;
@@ -19,12 +21,13 @@ public class ProximityPickupsGenerator : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        if (!isFakePlayer)
+        if (!isFakePlayer) {
             // generate in whole area only once
-            for (int i = 0; i < maxPickupsInProximity / 2; i++) {
+            for (int i = 0; i < maxPickupsInProximity; i++) {
                 GameObject pickupType = Helpers.ChooseObjectWithChances(pickups, pickupChances);
                 SpawnPickup(pickupType, true);
             }
+        }
     }
 
     // Update is called once per frame
@@ -46,13 +49,14 @@ public class ProximityPickupsGenerator : MonoBehaviour {
     List<GameObject> GetPickupsFurther() {
         return PickupManager.instance.pickupsOnScene.Where(element => {
             float distance = Vector3.Distance(element.transform.position, transform.position);
-            return distance <= maxRadius && distance >= minRadius;
+            return distance <= maxRadius && distance >= minRadius
+            && transform.position.y > element.gameObject.transform.position.y;
         }).ToList();
     }
 
     private void SpawnPickup(GameObject pickup, bool ignoreMinRadius = false) {
-        float distance = Random.Range(ignoreMinRadius ? 2f : minRadius, maxRadius);
-        float angle = Random.Range(0, 360f);
+        float distance = Random.Range(ignoreMinRadius ? 10f : minRadius, maxRadius);
+        float angle = Random.Range(minAngle, maxAngle);
 
         Vector3 spawnPoint = Helpers.RadianToCartesianCoords(distance, angle);
         spawnPoint = transform.position + spawnPoint;

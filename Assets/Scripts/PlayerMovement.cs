@@ -19,7 +19,8 @@ public class PlayerMovement : MonoBehaviour {
 
     float _horizontalInput;
     //float _verticalInput;
-    List<Player> players = new List<Player>();
+    [HideInInspector]
+    public List<Player> players = new List<Player>();
 
     public void SpawnFirstRoot() {
         GameObject newGo = Instantiate(playerPrefab, playerSpawnPoint);
