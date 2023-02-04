@@ -21,9 +21,7 @@ public class PlayerMovement : MonoBehaviour {
     //float _verticalInput;
     List<Player> players = new List<Player>();
 
-
-
-    private void Awake() {
+    public void SpawnFirstRoot() {
         GameObject newGo = Instantiate(playerPrefab, playerSpawnPoint);
         Player player = newGo.GetComponent<Player>();
         player.Setup(true, this);
