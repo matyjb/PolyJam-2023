@@ -21,12 +21,13 @@ public class ProximityPickupsGenerator : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        if (!isFakePlayer)
+        if (!isFakePlayer) {
             // generate in whole area only once
-            for (int i = 0; i < maxPickupsInProximity / 2; i++) {
+            for (int i = 0; i < maxPickupsInProximity; i++) {
                 GameObject pickupType = Helpers.ChooseObjectWithChances(pickups, pickupChances);
                 SpawnPickup(pickupType, true);
             }
+        }
     }
 
     // Update is called once per frame
