@@ -23,6 +23,10 @@ public class RootGeneratorController : MonoBehaviour {
         randomAngleOffset = Random.Range(0, 2 * Mathf.PI);
     }
 
+    float RandomPlusMinus(float value, float divBy = 2) {
+        return Random.Range(value - value / divBy, value + value / divBy);
+    }
+
     // Update is called once per frame
     void Update() {
 
@@ -32,10 +36,10 @@ public class RootGeneratorController : MonoBehaviour {
         rootLen += distance;
         transform.localPosition += step;
 
-        if (Mathf.Abs(transform.localRotation.eulerAngles.z) <= maxAngle / 2) {
+        //if (Mathf.Abs(transform.localRotation.eulerAngles.z) <= maxAngle / 2) {
             float angleStep = Mathf.Sin(Time.time + randomAngleOffset) * Time.deltaTime * anglePerSecond;
-            transform.Rotate(new Vector3(0, 0, 1), angleStep);
-        }
+            transform.Rotate(new Vector3(0, 0, 1), RandomPlusMinus(angleStep));
+        //}
         float rand = Random.Range(0, 1f);
 
         if (rootLen > maxLength) {
@@ -46,11 +50,12 @@ public class RootGeneratorController : MonoBehaviour {
             segmentLen = 0;
 
             RootGeneratorController child = Instantiate(this, transform.parent);
-            child.transform.Rotate(new Vector3(0, 0, newBranchAngle / 2));
-            transform.Rotate(new Vector3(0, 0, -newBranchAngle / 2));
+            var randomBranchAngle = RandomPlusMinus(newBranchAngle);
+            child.transform.Rotate(new Vector3(0, 0, randomBranchAngle / 2));
+            transform.Rotate(new Vector3(0, 0, -randomBranchAngle / 2));
 
             child.GetComponent<TrailRenderer>().widthMultiplier *= Mathf.Max(0.02f, 1 - rootLen / maxLength);
-            child.angleSpeed = Random.Range(child.angleSpeed - child.angleSpeed / 4, child.angleSpeed + child.angleSpeed / 4);
+            child.angleSpeed = RandomPlusMinus(child.angleSpeed, 4f);
         }
     }
 }

@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
     [HideInInspector]
     public bool isMain = false;
+    public float smallRootsSpawnChancePerSecond = 1f;
     [HideInInspector]
     public float fakeRotate = 0;
     public bool flipControls = false;
@@ -35,8 +36,12 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        if (isMain)
+        if (isMain) {
+            if(Random.Range(0,1f) < smallRootsSpawnChancePerSecond * Time.deltaTime) {
+                SpawnSmallRoots();
+            }
             return;
+        }
 
         // Fake rotate
         fakeRotate = 0;
@@ -67,7 +72,6 @@ public class Player : MonoBehaviour {
 
     public void Split() {
         playerMovement.Split(this);
-        SpawnSmallRoots();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
