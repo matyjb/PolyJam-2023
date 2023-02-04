@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2846367573672495127}
   - component: {fileID: 2846367573672495126}
   - component: {fileID: 3046054393967289815}
+  - component: {fileID: 2686740407525751392}
   m_Layer: 0
   m_Name: RootGenerator
   m_TagString: Untagged
@@ -74,7 +75,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_Time: 999
   m_Parameters:
     serializedVersion: 3
@@ -153,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09da036a67a82048944c7075fe2ed49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fakePlayerPickupChancePerSecond: 0.1
   minRadius: 5
   maxRadius: 10
   pickups:
@@ -160,3 +162,29 @@ MonoBehaviour:
   - {fileID: 7291705036321764415, guid: fbf61ecec3a65884b86ec128aaab6165, type: 3}
   pickupChances: 0100000005000000
   maxPickupsInProximity: 10
+--- !u!114 &2686740407525751392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846367573672495113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7625df46fb14f496c8507820b2162e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Root: {fileID: 0}
+  isMain: 0
+  smallRootsSpawnChancePerSecond: 1
+  fakeRotate: 0
+  flipControls: 0
+  rotationSpeed: 0
+  rig2d: {fileID: 0}
+  upperTrail: {fileID: 0}
+  belowTrail: {fileID: 0}
+  tunnelTrail: {fileID: 0}
+  upperTrailMain: {fileID: 0}
+  belowTrailMain: {fileID: 0}
+  upperTrailNonMain: {fileID: 0}
+  belowTrailNonMain: {fileID: 0}
