@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2846367573672495127}
   - component: {fileID: 2846367573672495126}
+  - component: {fileID: 3046054393967289815}
   m_Layer: 0
   m_Name: RootGenerator
   m_TagString: Untagged
@@ -140,3 +141,22 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &3046054393967289815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846367573672495113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09da036a67a82048944c7075fe2ed49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRadius: 5
+  maxRadius: 10
+  pickups:
+  - {fileID: 8546436071534871730, guid: 22458b975567fbf438ee34953c5b771e, type: 3}
+  - {fileID: 7291705036321764415, guid: fbf61ecec3a65884b86ec128aaab6165, type: 3}
+  pickupChances: 0100000005000000
+  maxPickupsInProximity: 10

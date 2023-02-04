@@ -280,6 +280,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2686740407525751392, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: Root
+      value: 
+      objectReference: {fileID: 4327142040490836359, guid: 1bd4399d6008f4d4e9456c9a7fb8f753, type: 3}
     - target: {fileID: 2846367573672495113, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -368,8 +372,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2846367573672495126, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: pickups.Array.data[1]
+      value: 
+      objectReference: {fileID: 8663354785553387227, guid: bba9cef5c49a7410b81d6894abe1dcc7, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
 --- !u!4 &5670929293594271720 stripped
 Transform:
@@ -418,18 +425,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
---- !u!114 &7631070112981038608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5670929293594271734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7625df46fb14f496c8507820b2162e83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Root: {fileID: 4327142040490836359, guid: 1bd4399d6008f4d4e9456c9a7fb8f753, type: 3}
-  flipControls: 0
-  rig2d: {fileID: 0}

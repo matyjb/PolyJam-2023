@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour {
     [Header("Prefabs")]
     public GameObject Root;
 
+    [HideInInspector]
     public bool isMain = false;
+    [HideInInspector]
     public float fakeRotate = 0;
     public bool flipControls = false;
     public float rotationSpeed;
@@ -54,8 +53,15 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("splitPowerup")) {
-            Destroy(collision.gameObject);
+        if (isMain) {
+            HandlePickupPickedUp(collision.gameObject);
+        }
+    }
+
+    public void HandlePickupPickedUp(GameObject pickup, bool withDestroy = true) {
+        if (pickup.CompareTag("splitPowerup")) {
+            if (withDestroy)
+                PickupManager.instance.DestroyPickup(pickup);
             Split();
         }
     }
