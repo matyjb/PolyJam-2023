@@ -8,6 +8,8 @@ public class ProximityPickupsGenerator : MonoBehaviour {
     public float fakePlayerPickupChancePerSecond = 0.1f;
     public float minRadius = 5;
     public float maxRadius = 10;
+    public float minAngle = 0;
+    public float maxAngle = 360;
     public List<GameObject> pickups = new List<GameObject>();
     public List<int> pickupChances = new List<int>();
     public int maxPickupsInProximity = 10;
@@ -52,7 +54,7 @@ public class ProximityPickupsGenerator : MonoBehaviour {
 
     private void SpawnPickup(GameObject pickup, bool ignoreMinRadius = false) {
         float distance = Random.Range(ignoreMinRadius ? 2f : minRadius, maxRadius);
-        float angle = Random.Range(0, 360f);
+        float angle = Random.Range(minAngle, maxAngle);
 
         Vector3 spawnPoint = Helpers.RadianToCartesianCoords(distance, angle);
         spawnPoint = transform.position + spawnPoint;

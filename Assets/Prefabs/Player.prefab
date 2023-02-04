@@ -584,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495127, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.70710677
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495127, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -596,7 +596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495127, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.70710677
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495127, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -608,12 +608,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2846367573672495127, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: maxAngle
+      value: 330
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: minAngle
+      value: 210
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: maxRadius
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: minRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: pickups.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: maxPickupsInProximity
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: pickups.Array.data[1]
       value: 
       objectReference: {fileID: 8663354785553387227, guid: bba9cef5c49a7410b81d6894abe1dcc7, type: 3}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: pickups.Array.data[2]
+      value: 
+      objectReference: {fileID: 4479455156104975435, guid: 6cfbfdd0ea7efc447aba22bd0afe7e2b, type: 3}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: pickupChances.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: pickupChances.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3046054393967289815, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: fakePlayerPickupChancePerSecond
       value: 0.02
