@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class NextLevelManager : MonoBehaviour {
     public static int currentLevel = 0;
     public static float currentEnergyLevel = 0;
+    public static float splitsDone = 0;
+    public static float finalScore { get => (1 + splitsDone) * (1 + currentLevel); }
     public static GameModes? nextGameMode = null;
     public static Color? color = null;
     public TMP_Text levelText;
