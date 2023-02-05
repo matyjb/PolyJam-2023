@@ -73,7 +73,7 @@ public class GameController : MonoBehaviour {
 
     private void Update() {
         if (mainPlayer != null) {
-            NextLevelManager.currentEnergyLevel -= energyDepletionPerSec * Time.deltaTime;
+            NextLevelManager.currentEnergyLevel -= energyDepletionPerSec * Time.deltaTime * (1 + NextLevelManager.currentLevel * 0.05f);
             NextLevelManager.currentEnergyLevel = Mathf.Max(Mathf.Min(NextLevelManager.currentEnergyLevel, maxEnergyLevel), 0);
             energyText.text = "Energy: " + NextLevelManager.currentEnergyLevel.ToString("N2");
         }
