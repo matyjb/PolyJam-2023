@@ -8,6 +8,7 @@ TagManager:
   - rock
   - core
   - energy
+  - player
   layers:
   - Default
   - TransparentFX

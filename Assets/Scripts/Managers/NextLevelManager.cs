@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class NextLevelManager : MonoBehaviour
-{
+public class NextLevelManager : MonoBehaviour {
     public static int currentLevel = 0;
+    public static float currentEnergyLevel = 0;
     public static GameModes? nextGameMode = null;
     public static Color? color = null;
 

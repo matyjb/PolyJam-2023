@@ -6,15 +6,19 @@ public class LevelBackgroundsManagers : MonoBehaviour
 {
     [Header("Prefabs")]
     public GameObject undergroundTilePrefab;
+    public GameObject rockPrefab;
+    public GameObject corePrefab;
 
+    [Header("Settings")]
     public int firstOrder = -80;
     public float firstYmove = -4.5f;
     public float nextYMove = -8f;
+
+    [Header("Sprites")]
     public Sprite randomBackgroundsFirst;
     public Sprite[] randomBackgroundNext2;
     public Sprite[] finish;
     public Sprite[] randomElements;
-    public GameObject corePrefab;
 
     private void Start() {
         SpawnBackgrounds();
@@ -43,6 +47,13 @@ public class LevelBackgroundsManagers : MonoBehaviour
 
             if (i == 5) {
                 GameObject newGo2 = Instantiate(corePrefab, newGo.transform);
+                // spawn rocks around
+                int rocksCount = 7;
+                for (int j = 0;j < rocksCount; j++) { 
+                    GameObject rock = Instantiate(rockPrefab, newGo.transform);
+                    rock.transform.position += (Vector3)Helpers.RadianToCartesianCoords(9,-180f / (rocksCount-1) * j);
+                    rock.transform.localScale = Vector3.one * 0.6f;
+                }
             }
         }
         

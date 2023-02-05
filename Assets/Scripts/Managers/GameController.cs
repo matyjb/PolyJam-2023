@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class GameController : MonoBehaviour
-{
+public class GameController : MonoBehaviour {
     public static GameController instance;
     private void Awake() {
         instance = this;
@@ -11,6 +12,8 @@ public class GameController : MonoBehaviour
 
     [Header("Settings")]
     public GameModes gameMode;
+    public float energyDepletionPerSec = 1;
+    public float maxEnergyLevel = 100;
 
     [Header("Managers")]
     public PlayerMovement playerMovement;
@@ -22,14 +25,19 @@ public class GameController : MonoBehaviour
     public Transform startScenePosition;
     public Transform rootBall;
     public SpriteRenderer whiteBlink;
+    public TextMeshProUGUI energyText;
+
+    [HideInInspector]
+    public Player mainPlayer;
 
     private void Start() {
+        NextLevelManager.currentEnergyLevel = maxEnergyLevel;
         if (NextLevelManager.nextGameMode.HasValue) {
             gameMode = NextLevelManager.nextGameMode.Value;
         }
         switch (gameMode) {
             case GameModes.Debug:
-                playerMovement.SpawnFirstRoot();
+                mainPlayer = playerMovement.SpawnFirstRoot();
                 break;
             case GameModes.FirstPlanet:
                 float timeToHit = 6f;
@@ -38,7 +46,7 @@ public class GameController : MonoBehaviour
                 whiteBlink.gameObject.SetActive(true);
                 startScenePosition.LeanMoveLocalY(5.6f, timeToHit - 0.4f).setOnComplete(() => {
                     LeanTween.delayedCall(1f, () => {
-                        playerMovement.SpawnFirstRoot();
+                        mainPlayer = playerMovement.SpawnFirstRoot();
                     });
 
                 });
@@ -58,9 +66,21 @@ public class GameController : MonoBehaviour
             case GameModes.NextPlanet:
                 virtualCamera.Follow = startScenePosition;
                 landManager.ChangeEvil(true);
-                playerMovement.SpawnFirstRoot();
+                mainPlayer = playerMovement.SpawnFirstRoot();
                 break;
         }
+    }
+
+    private void Update() {
+        if (mainPlayer != null) {
+            NextLevelManager.currentEnergyLevel -= energyDepletionPerSec * Time.deltaTime;
+            NextLevelManager.currentEnergyLevel = Mathf.Max(Mathf.Min(NextLevelManager.currentEnergyLevel, maxEnergyLevel), 0);
+            energyText.text = "Energy: " + NextLevelManager.currentEnergyLevel.ToString("N2");
+        }
+    }
+
+    public void GainEnergy(int amount = 1) {
+        NextLevelManager.currentEnergyLevel += amount;
     }
 }
 

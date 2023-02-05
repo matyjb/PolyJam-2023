@@ -19,7 +19,7 @@ public class RockGen : MonoBehaviour {
 
     }
 
-    void GenRock() {
+    public void GenRock() {
         int cornersCount = Random.Range(10, 16);
         List<float> distances = new List<float>();
         List<float> angles = new List<float>();

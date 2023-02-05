@@ -22,12 +22,13 @@ public class PlayerMovement : MonoBehaviour {
     [HideInInspector]
     public List<Player> players = new List<Player>();
 
-    public void SpawnFirstRoot() {
+    public Player SpawnFirstRoot() {
         GameObject newGo = Instantiate(playerPrefab, playerSpawnPoint);
         Player player = newGo.GetComponent<Player>();
         player.Setup(true, this);
         players.Add(player);
         virtualCamera.Follow = newGo.transform;
+        return player;
     }
 
     void Update() {
