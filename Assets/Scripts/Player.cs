@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
     [Header("Prefabs")]
@@ -92,7 +93,7 @@ public class Player : MonoBehaviour {
                 GameController.instance.playerMovement.players.Remove(this);
                 if (withDestroy)
                     Destroy(rig2d);
-                // TODO: next planet
+                SceneManager.LoadScene("CompletePlanet");
             }
         }
 
