@@ -23,6 +23,7 @@ public class LandManager : MonoBehaviour
     public GameObject evilAlien1;
     public GameObject notEvilAlien2;
     public GameObject evilAlien2;
+    public GameObject fire;
 
     private void Start() {
         if (NextLevelManager.color.HasValue) {
@@ -43,6 +44,7 @@ public class LandManager : MonoBehaviour
         notEvilAlien1.SetActive(!isEvil);
         evilAlien2.SetActive(isEvil);
         notEvilAlien2.SetActive(!isEvil);
+        fire.SetActive(isEvil);
     }
 
     Color DarkenColor(Color color) {
