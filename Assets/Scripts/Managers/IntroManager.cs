@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour
 {
@@ -19,12 +20,16 @@ public class IntroManager : MonoBehaviour
     public Transform spaceFront;
     public Transform spaceFrontChild;
     public Transform rootBall;
+    public GameObject pressSpace;
 
     public static bool firstTime = true;
     bool waitingForPlayerStart = false;
 
+    AsyncOperation ap;
+
     void Start()
     {
+        rootBall.gameObject.SetActive(false);
         spaceBack.LeanMove(new Vector3(-3, 0, 0), 35f).setLoopPingPong();
         spaceFront.LeanMove(new Vector3(-3, 0, 0), 20f).setLoopPingPong();
         if (firstTime) {
@@ -38,6 +43,8 @@ public class IntroManager : MonoBehaviour
             planet.transform.position = planetPreGamePosition.position;
         }
         planet.GetComponent<Planet>().ChangeColor(NextLevelManager.color.Value);
+        ap = SceneManager.LoadSceneAsync("GameScene");
+        ap.allowSceneActivation = false;
     }
 
     private void Update() {
@@ -49,7 +56,11 @@ public class IntroManager : MonoBehaviour
 
     void StartIntroSequence() {
         AudioManager.instance.PlayIntroMusic();
-        float time = 10.5f;
+        AudioManager.instance.PlaySound(0);
+        pressSpace.SetActive(false);
+        float time = 10.2f;
+        logo.LeanMoveY(10, 0.8f).setEaseInOutSine();
+        rootBall.gameObject.SetActive(true);
         planet.GetComponent<Planet>().StopMoveAnimation();
         planet.LeanMove(planetPreGamePosition.position, time).setEaseInSine();
         planet.LeanScale(Vector3.one * 1.8f, time).setEaseInSine();
@@ -57,5 +68,9 @@ public class IntroManager : MonoBehaviour
         spaceFrontChild.LeanScale(Vector3.one * 1.8f, time).setEaseInSine();
         rootBall.LeanMove(new Vector3(-1.45f, 1.4f, 0), time - 4f).delay = 4;
         rootBall.LeanScale(Vector3.one * 0.4f, time - 4f).delay = 4;
+        LeanTween.delayedCall(time, () => {
+            NextLevelManager.nextGameMode = GameModes.FirstPlanet;
+            ap.allowSceneActivation = true;
+        });
     }
 }

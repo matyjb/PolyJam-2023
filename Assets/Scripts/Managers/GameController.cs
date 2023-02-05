@@ -40,19 +40,24 @@ public class GameController : MonoBehaviour {
                 mainPlayer = playerMovement.SpawnFirstRoot();
                 break;
             case GameModes.FirstPlanet:
+                float timeToHit = 6f;
                 virtualCamera.Follow = startScenePosition;
                 whiteBlink.color = new Color(0, 0, 0, 0);
                 whiteBlink.gameObject.SetActive(true);
-                startScenePosition.LeanMoveLocalY(5.6f, 3f).setOnComplete(() => {
-                    LeanTween.delayedCall(1.9f, () => {
+                startScenePosition.LeanMoveLocalY(5.6f, timeToHit - 0.4f).setOnComplete(() => {
+                    LeanTween.delayedCall(1f, () => {
                         mainPlayer = playerMovement.SpawnFirstRoot();
                     });
 
                 });
-                rootBall.LeanMove(new Vector3(0, 1.35f, 0), 0.4f).setEaseInCirc().setDelay(2.8f).setOnComplete(() => {
+                // Root ball
+                rootBall.LeanMove(new Vector3(0, 1.35f, 0), 0.4f).setEaseInCirc().setDelay(timeToHit - 0.4f).setOnComplete(() => {
                     rootBall.gameObject.SetActive(false);
                 });
-                LeanTween.value(whiteBlink.gameObject, new Color(0, 0, 0, 0), new Color(0, 0, 0, 0.15f), 1f).setDelay(2f).setOnComplete(() => {
+
+                // White blink
+                LeanTween.value(whiteBlink.gameObject, new Color(0, 0, 0, 0), new Color(0, 0, 0, 0.35f), 1.2f).setDelay(timeToHit - 1.2f).setOnComplete(() => {
+                    AudioManager.instance.PlayGamePlayMusic();
                     whiteBlink.color = Color.white;
                     landManager.ChangeEvil(true);
                     LeanTween.value(whiteBlink.gameObject, Color.white, new Color(255, 255, 255, 0), 2f).delay = 0.5f;
