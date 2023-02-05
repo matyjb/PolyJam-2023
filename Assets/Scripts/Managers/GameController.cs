@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
     [Header("Settings")]
     public GameModes gameMode;
     public float energyDepletionPerSec = 1;
-    public float maxEnergyLevel = 100;
+    public float maxEnergyLevel = 20;
 
     [Header("Managers")]
     public PlayerMovement playerMovement;
@@ -26,11 +26,13 @@ public class GameController : MonoBehaviour {
     public Transform rootBall;
     public SpriteRenderer whiteBlink;
     public TextMeshProUGUI energyText;
+    public CanvasGroup winieta;
 
     [HideInInspector]
     public Player mainPlayer;
 
     private void Start() {
+        winieta.alpha = 0;
         NextLevelManager.currentEnergyLevel = maxEnergyLevel;
         if (NextLevelManager.nextGameMode.HasValue) {
             gameMode = NextLevelManager.nextGameMode.Value;
@@ -75,6 +77,11 @@ public class GameController : MonoBehaviour {
         if (mainPlayer != null) {
             NextLevelManager.currentEnergyLevel -= energyDepletionPerSec * Time.deltaTime;
             NextLevelManager.currentEnergyLevel = Mathf.Max(Mathf.Min(NextLevelManager.currentEnergyLevel, maxEnergyLevel), 0);
+            if (NextLevelManager.currentEnergyLevel >= 10) {
+                winieta.alpha = 0;
+            } else {
+                winieta.alpha = 1 - NextLevelManager.currentEnergyLevel / 10f;
+            }
             energyText.text = "Energy: " + NextLevelManager.currentEnergyLevel.ToString("N2");
         }
     }
