@@ -93,6 +93,7 @@ public class Player : MonoBehaviour {
     public void HandlePickupPickedUp(GameObject pickup, bool withDestroy = true) {
         if (isMain) {
             if (pickup.CompareTag("splitPowerup")) {
+                NextLevelManager.splitsDone++;
                 if (AudioManager.instance != null)
                     AudioManager.instance.PlaySound(3);
                 if (withDestroy)
