@@ -33,6 +33,7 @@ public class AudioManager : MonoBehaviour
     public void PlayGamePlayMusic() {
         audioSourceMusic.Stop();
         audioSourceMusic.clip = gameMusic;
+        audioSourceMusic.volume = 0.8f;
         audioSourceMusic.Play();
     }
 

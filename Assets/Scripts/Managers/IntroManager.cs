@@ -20,6 +20,7 @@ public class IntroManager : MonoBehaviour
     public Transform spaceFront;
     public Transform spaceFrontChild;
     public Transform rootBall;
+    public GameObject pressSpace;
 
     public static bool firstTime = true;
     bool waitingForPlayerStart = false;
@@ -56,8 +57,9 @@ public class IntroManager : MonoBehaviour
     void StartIntroSequence() {
         AudioManager.instance.PlayIntroMusic();
         AudioManager.instance.PlaySound(0);
+        pressSpace.SetActive(false);
         float time = 10.2f;
-        logo.LeanMoveY(10, 0.6f).setEaseInBack();
+        logo.LeanMoveY(10, 0.8f).setEaseInOutSine();
         rootBall.gameObject.SetActive(true);
         planet.GetComponent<Planet>().StopMoveAnimation();
         planet.LeanMove(planetPreGamePosition.position, time).setEaseInSine();
