@@ -797,6 +797,7 @@ MonoBehaviour:
   startScenePosition: {fileID: 421228152}
   rootBall: {fileID: 1997007873}
   whiteBlink: {fileID: 290127804}
+  mainPlayer: {fileID: 0}
 --- !u!4 &498821047
 Transform:
   m_ObjectHideFlags: 0
@@ -1202,6 +1203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   undergroundTilePrefab: {fileID: 4190690229207951551, guid: 451c5983f9f5c4d7cb08fd6dceff88eb, type: 3}
   rockPrefab: {fileID: 4479455156104975435, guid: 6cfbfdd0ea7efc447aba22bd0afe7e2b, type: 3}
+  corePrefab: {fileID: 8748620612860295094, guid: 0380819eb518d4e5aa07dd94b8590e35, type: 3}
   firstOrder: -80
   firstYmove: -4.5
   nextYMove: -8
@@ -1222,7 +1224,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 25bbba492089b4fa6940701703cb39ce, type: 3}
   - {fileID: 21300000, guid: 5a2253f6ecd944b6f86d44c5426a6278, type: 3}
   - {fileID: 21300000, guid: a89f7c4445807493b839a8de6f75960d, type: 3}
-  corePrefab: {fileID: 8748620612860295094, guid: 0380819eb518d4e5aa07dd94b8590e35, type: 3}
 --- !u!1 &940976093 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8663354785553387227, guid: bba9cef5c49a7410b81d6894abe1dcc7, type: 3}
@@ -2493,14 +2494,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059739661}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &2126381015
 GameObject:
   m_ObjectHideFlags: 0
