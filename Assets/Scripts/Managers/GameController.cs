@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour {
     public Transform rootBall;
     public SpriteRenderer whiteBlink;
 
+    [HideInInspector]
     public Player mainPlayer;
 
     private void Start() {
@@ -54,7 +55,7 @@ public class GameController : MonoBehaviour {
             case GameModes.NextPlanet:
                 virtualCamera.Follow = startScenePosition;
                 landManager.ChangeEvil(true);
-                playerMovement.SpawnFirstRoot();
+                mainPlayer = playerMovement.SpawnFirstRoot();
                 break;
         }
     }

@@ -106,6 +106,7 @@ public class Player : MonoBehaviour {
             // TODO: picked up energy, what now?
             if (withDestroy)
                 PickupManager.instance.DestroyPickup(pickup);
+            NextLevelManager.GainEnergy();
         }
 
 
