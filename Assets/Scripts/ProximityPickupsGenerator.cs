@@ -55,7 +55,7 @@ public class ProximityPickupsGenerator : MonoBehaviour {
     }
 
     private void SpawnPickup(GameObject pickup, bool ignoreMinRadius = false) {
-        float distance = Random.Range(ignoreMinRadius ? 10f : minRadius, maxRadius);
+        float distance = Random.Range(ignoreMinRadius ? 3f : minRadius, maxRadius);
         float angle = Random.Range(minAngle, maxAngle);
 
         Vector3 spawnPoint = Helpers.RadianToCartesianCoords(distance, angle);
