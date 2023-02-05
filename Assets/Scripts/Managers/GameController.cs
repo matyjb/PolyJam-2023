@@ -35,18 +35,21 @@ public class GameController : MonoBehaviour {
     [HideInInspector]
     public Player mainPlayer;
 
+    bool gameOver = false;
+
     private void Start() {
         winieta.alpha = 0;
         NextLevelManager.currentEnergyLevel = maxEnergyLevel;
         if (NextLevelManager.nextGameMode.HasValue) {
             gameMode = NextLevelManager.nextGameMode.Value;
         }
+        float timeToHit;
         switch (gameMode) {
             case GameModes.Debug:
                 mainPlayer = playerMovement.SpawnFirstRoot();
                 break;
             case GameModes.FirstPlanet:
-                float timeToHit = 6f;
+                timeToHit = 6f;
                 virtualCamera.Follow = startScenePosition;
                 whiteBlink.color = new Color(0, 0, 0, 0);
                 whiteBlink.gameObject.SetActive(true);
@@ -70,9 +73,28 @@ public class GameController : MonoBehaviour {
                 });
                 break;
             case GameModes.NextPlanet:
+                timeToHit = 3f;
                 virtualCamera.Follow = startScenePosition;
-                landManager.ChangeEvil(true);
-                mainPlayer = playerMovement.SpawnFirstRoot();
+                whiteBlink.color = new Color(0, 0, 0, 0);
+                whiteBlink.gameObject.SetActive(true);
+                startScenePosition.LeanMoveLocalY(5.6f, timeToHit - 0.4f).setOnComplete(() => {
+                    LeanTween.delayedCall(1f, () => {
+                        mainPlayer = playerMovement.SpawnFirstRoot();
+                    });
+
+                });
+                // Root ball
+                rootBall.LeanMove(new Vector3(0, 1.35f, 0), 0.4f).setEaseInCirc().setDelay(timeToHit - 0.4f).setOnComplete(() => {
+                    rootBall.gameObject.SetActive(false);
+                });
+
+                // White blink
+                LeanTween.value(whiteBlink.gameObject, new Color(0, 0, 0, 0), new Color(0, 0, 0, 0.35f), 1.2f).setDelay(timeToHit - 1.2f).setOnComplete(() => {
+                    //AudioManager.instance?.PlayGamePlayMusic();
+                    whiteBlink.color = Color.white;
+                    landManager.ChangeEvil(true);
+                    LeanTween.value(whiteBlink.gameObject, Color.white, new Color(255, 255, 255, 0), 2f).delay = 0.5f;
+                });
                 break;
         }
     }
@@ -105,7 +127,15 @@ public class GameController : MonoBehaviour {
             //} else {
             //    mainPlayer.upperTrail.material = mainPlayer.upperTrailDead;
             //}
+
+            if (!gameOver) {
+                if (NextLevelManager.currentEnergyLevel <= 0) {
+                    GameOver();
+                }
+            }
         }
+
+        
     }
 
     public void GainEnergy(float amount = 0.3f) {
@@ -115,6 +145,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void GameOver() {
+        gameOver = true;
         gameOverGo.SetActive(true);
         int planets = NextLevelManager.currentLevel;
         for (int i = 0; i < planets; i++) {

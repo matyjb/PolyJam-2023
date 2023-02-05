@@ -129,7 +129,7 @@ public class Player : MonoBehaviour {
                 Destroy(rig2d);
             if(isMain) {
                 NextLevelManager.currentEnergyLevel = 0;
-                // TODO: show end screen
+                 //GameController.instance.GameOver(); <- there is already gameover if energy <= 0;
 
             }
         } else if (pickup.CompareTag("energy")) {
