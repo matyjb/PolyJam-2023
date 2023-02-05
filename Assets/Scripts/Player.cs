@@ -117,7 +117,11 @@ public class Player : MonoBehaviour {
             GameController.instance.playerMovement.players.Remove(this);
             if (withDestroy)
                 Destroy(rig2d);
-            // TODO: show end screen
+            if(isMain) {
+                NextLevelManager.currentEnergyLevel = 0;
+                // TODO: show end screen
+
+            }
         } else if (pickup.CompareTag("energy")) {
             // TODO: picked up energy, what now?
             if (withDestroy)
