@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
                 });
 
                 // White blink
-                LeanTween.value(whiteBlink.gameObject, new Color(0, 0, 0, 0), new Color(0, 0, 0, 0.35f), 3f).setDelay(timeToHit - 3).setOnComplete(() => {
+                LeanTween.value(whiteBlink.gameObject, new Color(0, 0, 0, 0), new Color(0, 0, 0, 0.35f), 1.2f).setDelay(timeToHit - 1.2f).setOnComplete(() => {
                     AudioManager.instance.PlayGamePlayMusic();
                     whiteBlink.color = Color.white;
                     landManager.ChangeEvil(true);

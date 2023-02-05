@@ -57,6 +57,7 @@ public class IntroManager : MonoBehaviour
         AudioManager.instance.PlayIntroMusic();
         AudioManager.instance.PlaySound(0);
         float time = 10.2f;
+        logo.LeanMoveY(10, 0.6f).setEaseInBack();
         rootBall.gameObject.SetActive(true);
         planet.GetComponent<Planet>().StopMoveAnimation();
         planet.LeanMove(planetPreGamePosition.position, time).setEaseInSine();
