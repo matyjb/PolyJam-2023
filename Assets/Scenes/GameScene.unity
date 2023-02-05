@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMode: 1
-  energyDepletionPerSec: 2
+  energyDepletionPerSec: 0.5
   maxEnergyLevel: 20
   playerMovement: {fileID: 1204509767}
   virtualCamera: {fileID: 1147452964}

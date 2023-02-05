@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
@@ -12,7 +13,7 @@ public class GameController : MonoBehaviour {
 
     [Header("Settings")]
     public GameModes gameMode;
-    public float energyDepletionPerSec = 1;
+    public float energyDepletionPerSec = 0.5f;
     public float maxEnergyLevel = 20;
 
     [Header("Managers")]
@@ -77,6 +78,13 @@ public class GameController : MonoBehaviour {
     }
 
     private void Update() {
+        if (Input.GetKeyDown(KeyCode.L)) {
+            // force next planet
+            NextLevelManager.currentLevel++;
+            NextLevelManager.nextGameMode = GameModes.NextPlanet;
+            SceneManager.LoadScene("GameScene");
+        }
+
         if (mainPlayer != null) {
             NextLevelManager.currentEnergyLevel -= energyDepletionPerSec * Time.deltaTime * (1 + NextLevelManager.currentLevel * 0.05f);
             NextLevelManager.currentEnergyLevel = Mathf.Max(Mathf.Min(NextLevelManager.currentEnergyLevel, maxEnergyLevel), 0);
@@ -100,8 +108,10 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public void GainEnergy(int amount = 1) {
-        NextLevelManager.currentEnergyLevel += amount;
+    public void GainEnergy(float amount = 0.3f) {
+        if (NextLevelManager.currentEnergyLevel != 0) {
+            NextLevelManager.currentEnergyLevel += amount;
+        }
     }
 
     public void GameOver() {
