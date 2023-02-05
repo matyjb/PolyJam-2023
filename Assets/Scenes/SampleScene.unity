@@ -749,6 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   undergroundTilePrefab: {fileID: 4190690229207951551, guid: 451c5983f9f5c4d7cb08fd6dceff88eb, type: 3}
+  rockPrefab: {fileID: 4479455156104975435, guid: 6cfbfdd0ea7efc447aba22bd0afe7e2b, type: 3}
   firstOrder: -80
   firstYmove: -4.5
   nextYMove: -8
@@ -1006,6 +1007,7 @@ MonoBehaviour:
   maxRotation: 340
   playerSpawnPoint: {fileID: 2059739662}
   virtualCamera: {fileID: 1147452964}
+  players: []
 --- !u!4 &1204509768
 Transform:
   m_ObjectHideFlags: 0
