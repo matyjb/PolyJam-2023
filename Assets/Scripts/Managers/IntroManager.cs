@@ -54,7 +54,8 @@ public class IntroManager : MonoBehaviour
 
     void StartIntroSequence() {
         AudioManager.instance.PlayIntroMusic();
-        float time = 10.5f;
+        AudioManager.instance.PlaySound(0);
+        float time = 10.2f;
         planet.GetComponent<Planet>().StopMoveAnimation();
         planet.LeanMove(planetPreGamePosition.position, time).setEaseInSine();
         planet.LeanScale(Vector3.one * 1.8f, time).setEaseInSine();

@@ -33,7 +33,7 @@ public class LandManager : MonoBehaviour
         trees2.color = darkerColor;
         bush.color = darkerColor;
         grass.color = (grassColor + color) / 2;
-        alien2.LeanMoveLocalX(-6.5f, 4f);
+        alien2.LeanMoveLocalX(-6.5f, 7f);
         ChangeEvil(false);
     }
 

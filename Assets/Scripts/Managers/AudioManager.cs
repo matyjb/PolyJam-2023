@@ -9,8 +9,11 @@ public class AudioManager : MonoBehaviour
     [Header("Settings")]
     public AudioClip introMusic;
     public AudioClip gameMusic;
+    public AudioClip[] sounds;
 
-    AudioSource audioSource;
+    [Header("AudioSource")]
+    public AudioSource audioSourceMusic;
+    public AudioSource audioSourceSounds;
 
     private void Awake() {
         if (instance == null) {
@@ -19,16 +22,21 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-        audioSource = GetComponent<AudioSource>();
+        audioSourceMusic = GetComponent<AudioSource>();
     }
 
     public void PlayIntroMusic() {
-        audioSource.clip = introMusic;
-        audioSource.Play();
+        audioSourceMusic.clip = introMusic;
+        audioSourceMusic.Play();
     }
 
     public void PlayGamePlayMusic() {
-        audioSource.clip = gameMusic;
-        audioSource.Play();
+        audioSourceMusic.Stop();
+        audioSourceMusic.clip = gameMusic;
+        audioSourceMusic.Play();
+    }
+
+    public void PlaySound(int id) {
+        audioSourceSounds.PlayOneShot(sounds[id]);
     }
 }
