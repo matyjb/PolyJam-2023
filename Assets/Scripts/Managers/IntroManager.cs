@@ -28,6 +28,7 @@ public class IntroManager : MonoBehaviour
 
     void Start()
     {
+        rootBall.gameObject.SetActive(false);
         spaceBack.LeanMove(new Vector3(-3, 0, 0), 35f).setLoopPingPong();
         spaceFront.LeanMove(new Vector3(-3, 0, 0), 20f).setLoopPingPong();
         if (firstTime) {
@@ -56,6 +57,7 @@ public class IntroManager : MonoBehaviour
         AudioManager.instance.PlayIntroMusic();
         AudioManager.instance.PlaySound(0);
         float time = 10.2f;
+        rootBall.gameObject.SetActive(true);
         planet.GetComponent<Planet>().StopMoveAnimation();
         planet.LeanMove(planetPreGamePosition.position, time).setEaseInSine();
         planet.LeanScale(Vector3.one * 1.8f, time).setEaseInSine();
