@@ -545,9 +545,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3531834081474936336}
     - target: {fileID: 2686740407525751392, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: upperTrailMax
+      value: 
+      objectReference: {fileID: 2100000, guid: 7504f979ab4904260be60f6aa3cf78fd, type: 2}
+    - target: {fileID: 2686740407525751392, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: upperTrailMin
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b1eedc00d6b7449b89b7223a6e064f0, type: 2}
+    - target: {fileID: 2686740407525751392, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: belowTrailMain
       value: 
       objectReference: {fileID: 2100000, guid: c0f9ad19b49e74063b158b0aa6efcf68, type: 2}
+    - target: {fileID: 2686740407525751392, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: upperTrailDead
+      value: 
+      objectReference: {fileID: 2100000, guid: e42c8f664dd084347b219a9bf4a21928, type: 2}
     - target: {fileID: 2686740407525751392, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: upperTrailMain
       value: 
