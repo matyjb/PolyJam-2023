@@ -28,6 +28,9 @@ public class GameController : MonoBehaviour {
     public SpriteRenderer whiteBlink;
     public TextMeshProUGUI energyText;
     public CanvasGroup winieta;
+    public GameObject gameOverGo;
+    public Transform uiPlanetsResultParent;
+    public GameObject uiPlanetsUIPrefab;
 
     [HideInInspector]
     public Player mainPlayer;
@@ -93,21 +96,29 @@ public class GameController : MonoBehaviour {
             energyText.text = "Energy: " + NextLevelManager.currentEnergyLevel.ToString("N2");
 
             // Switch graphic
-            if (NextLevelManager.currentEnergyLevel >= 15f) {
-                mainPlayer.upperTrail.material = mainPlayer.upperTrailMax;
-            } else if (NextLevelManager.currentEnergyLevel >= 8f) {
-                mainPlayer.upperTrail.material = mainPlayer.upperTrailMain;
-            } else if (NextLevelManager.currentEnergyLevel > 0.2f) {
-                mainPlayer.upperTrail.material = mainPlayer.upperTrailMin;
-            } else {
-                mainPlayer.upperTrail.material = mainPlayer.upperTrailDead;
-            }
+            //if (NextLevelManager.currentEnergyLevel >= 15f) {
+            //    mainPlayer.upperTrail.material = mainPlayer.upperTrailMax;
+            //} else if (NextLevelManager.currentEnergyLevel >= 8f) {
+            //    mainPlayer.upperTrail.material = mainPlayer.upperTrailMain;
+            //} else if (NextLevelManager.currentEnergyLevel > 0.2f) {
+            //    mainPlayer.upperTrail.material = mainPlayer.upperTrailMin;
+            //} else {
+            //    mainPlayer.upperTrail.material = mainPlayer.upperTrailDead;
+            //}
         }
     }
 
     public void GainEnergy(float amount = 0.3f) {
         if (NextLevelManager.currentEnergyLevel != 0) {
             NextLevelManager.currentEnergyLevel += amount;
+        }
+    }
+
+    public void GameOver() {
+        gameOverGo.SetActive(true);
+        int planets = NextLevelManager.currentLevel;
+        for (int i = 0; i < planets; i++) {
+            GameObject newGo = Instantiate(uiPlanetsUIPrefab, uiPlanetsResultParent);
         }
     }
 }

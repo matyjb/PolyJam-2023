@@ -93,10 +93,15 @@ public class Player : MonoBehaviour {
     public void HandlePickupPickedUp(GameObject pickup, bool withDestroy = true) {
         if (isMain) {
             if (pickup.CompareTag("splitPowerup")) {
+                if (AudioManager.instance != null)
+                    AudioManager.instance.PlaySound(3);
                 if (withDestroy)
                     PickupManager.instance.DestroyPickup(pickup);
                 Split();
             } else if (pickup.CompareTag("core")) {
+                if (AudioManager.instance != null) {
+                    AudioManager.instance.PlaySound(1);
+                }
                 GameController.instance.playerMovement.players.Remove(this);
                 if (withDestroy)
                     Destroy(rig2d);
@@ -129,6 +134,8 @@ public class Player : MonoBehaviour {
             }
         } else if (pickup.CompareTag("energy")) {
             // TODO: picked up energy, what now?
+            if (AudioManager.instance != null)
+                AudioManager.instance.PlaySound(2);
             if (withDestroy)
                 PickupManager.instance.DestroyPickup(pickup);
             GameController.instance.GainEnergy();
