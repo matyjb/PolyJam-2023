@@ -61,8 +61,10 @@ public class ProximityPickupsGenerator : MonoBehaviour {
         Vector3 spawnPoint = Helpers.RadianToCartesianCoords(distance, angle);
         spawnPoint = transform.position + spawnPoint;
 
-        var p = Instantiate(pickup);
-        PickupManager.instance.pickupsOnScene.Add(p);
-        p.transform.position = spawnPoint;
+        if (spawnPoint.y > -43) {
+            var p = Instantiate(pickup);
+            PickupManager.instance.pickupsOnScene.Add(p);
+            p.transform.position = spawnPoint;
+        }
     }
 }
