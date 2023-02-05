@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour {
         }
 
         if (mainPlayer != null) {
-            NextLevelManager.currentEnergyLevel -= energyDepletionPerSec * Time.deltaTime * (1 + NextLevelManager.currentLevel * 0.05f);
+            NextLevelManager.currentEnergyLevel -= energyDepletionPerSec * Time.deltaTime * (1 + NextLevelManager.currentLevel * 0.15f);
             NextLevelManager.currentEnergyLevel = Mathf.Max(Mathf.Min(NextLevelManager.currentEnergyLevel, maxEnergyLevel), 0);
             if (NextLevelManager.currentEnergyLevel >= 10) {
                 winieta.alpha = 0;
