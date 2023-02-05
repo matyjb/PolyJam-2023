@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour {
     public GameObject gameOverGo;
     public Transform uiPlanetsResultParent;
     public GameObject uiPlanetsUIPrefab;
+    public TMP_Text scoreText;
 
     [HideInInspector]
     public Player mainPlayer;
@@ -151,6 +152,7 @@ public class GameController : MonoBehaviour {
         for (int i = 0; i < planets; i++) {
             GameObject newGo = Instantiate(uiPlanetsUIPrefab, uiPlanetsResultParent);
         }
+        scoreText.text = "Score: " + NextLevelManager.finalScore.ToString();
     }
 }
 
