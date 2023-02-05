@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class IntroManager : MonoBehaviour
     public static bool firstTime = true;
     bool waitingForPlayerStart = false;
 
+    AsyncOperation ap;
+
     void Start()
     {
         spaceBack.LeanMove(new Vector3(-3, 0, 0), 35f).setLoopPingPong();
@@ -38,6 +41,8 @@ public class IntroManager : MonoBehaviour
             planet.transform.position = planetPreGamePosition.position;
         }
         planet.GetComponent<Planet>().ChangeColor(NextLevelManager.color.Value);
+        ap = SceneManager.LoadSceneAsync("GameScene");
+        ap.allowSceneActivation = false;
     }
 
     private void Update() {
@@ -57,5 +62,9 @@ public class IntroManager : MonoBehaviour
         spaceFrontChild.LeanScale(Vector3.one * 1.8f, time).setEaseInSine();
         rootBall.LeanMove(new Vector3(-1.45f, 1.4f, 0), time - 4f).delay = 4;
         rootBall.LeanScale(Vector3.one * 0.4f, time - 4f).delay = 4;
+        LeanTween.delayedCall(time, () => {
+            NextLevelManager.nextGameMode = GameModes.FirstPlanet;
+            ap.allowSceneActivation = true;
+        });
     }
 }
