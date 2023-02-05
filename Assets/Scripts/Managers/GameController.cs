@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour {
                 virtualCamera.Follow = startScenePosition;
                 whiteBlink.color = new Color(0, 0, 0, 0);
                 whiteBlink.gameObject.SetActive(true);
-                startScenePosition.LeanMoveLocalY(5.6f, timeToHit - 0.4f).setOnComplete(() => {
+                startScenePosition.LeanMoveLocalY(5.2f, timeToHit - 0.4f).setOnComplete(() => {
                     LeanTween.delayedCall(1f, () => {
                         mainPlayer = playerMovement.SpawnFirstRoot();
                     });
@@ -74,11 +74,11 @@ public class GameController : MonoBehaviour {
                 });
                 break;
             case GameModes.NextPlanet:
-                timeToHit = 3f;
+                timeToHit = 2f;
                 virtualCamera.Follow = startScenePosition;
                 whiteBlink.color = new Color(0, 0, 0, 0);
                 whiteBlink.gameObject.SetActive(true);
-                startScenePosition.LeanMoveLocalY(5.6f, timeToHit - 0.4f).setOnComplete(() => {
+                startScenePosition.LeanMoveLocalY(5.2f, timeToHit - 0.4f).setOnComplete(() => {
                     LeanTween.delayedCall(1f, () => {
                         mainPlayer = playerMovement.SpawnFirstRoot();
                     });

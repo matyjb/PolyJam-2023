@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     [Header("Prefabs")]
     public GameObject playerPrefab;
 
-    public float speed { get => Mathf.Min(2.3f + NextLevelManager.currentLevel * 0.5f, 7); }
+    public float speed { get => Mathf.Min(2.3f + NextLevelManager.currentLevel * 0.8f, 7); }
     public float rotationSpeed { get => Mathf.Min(3 + NextLevelManager.currentLevel * 0.25f, 4.5f); }
     [Header("Settings")]
     public float minRotation = 270 - 70;
