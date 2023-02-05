@@ -24,6 +24,9 @@ public class GameController : MonoBehaviour
     public SpriteRenderer whiteBlink;
 
     private void Start() {
+        if (NextLevelManager.nextGameMode.HasValue) {
+            gameMode = NextLevelManager.nextGameMode.Value;
+        }
         switch (gameMode) {
             case GameModes.Debug:
                 playerMovement.SpawnFirstRoot();
@@ -46,6 +49,11 @@ public class GameController : MonoBehaviour
                     landManager.ChangeEvil(true);
                     LeanTween.value(whiteBlink.gameObject, Color.white, new Color(255, 255, 255, 0), 2f).delay = 0.5f;
                 });
+                break;
+            case GameModes.NextPlanet:
+                virtualCamera.Follow = startScenePosition;
+                landManager.ChangeEvil(true);
+                playerMovement.SpawnFirstRoot();
                 break;
         }
     }
