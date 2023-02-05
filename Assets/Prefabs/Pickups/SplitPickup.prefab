@@ -4823,6 +4823,7 @@ GameObject:
   - component: {fileID: 6296140556448599380}
   - component: {fileID: 6937723930387022893}
   - component: {fileID: 1328511817167435233}
+  - component: {fileID: -10182745913803663}
   m_Layer: 0
   m_Name: SplitPickup
   m_TagString: splitPowerup
@@ -4926,3 +4927,64 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5773587}
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
+--- !u!114 &-10182745913803663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8663354785553387227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c95abab36dac44cad32179bbebd55f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDistance: 2
+  positionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.003799023
+      outSlope: -0.003799023
+      tangentMode: 0
+      weightedMode: 2
+      inWeight: 0
+      outWeight: 0.81644225
+    - serializedVersion: 3
+      time: 1.0332336
+      value: 0.4386902
+      inSlope: 1.1526324
+      outSlope: 1.1526324
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07083333
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.53892136
+      value: -0.004699707
+      inSlope: -0.024049303
+      outSlope: -0.024049303
+      tangentMode: 0
+      weightedMode: 2
+      inWeight: 0
+      outWeight: 0.52054787
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
