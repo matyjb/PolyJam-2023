@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour {
     [Header("Prefabs")]
     public GameObject playerPrefab;
 
+    public float speed { get => 2.3f + NextLevelManager.currentLevel * 0.1f; }
+    public float rotationSpeed { get => 3 + NextLevelManager.currentLevel * 0.01f; }
     [Header("Settings")]
-    public float speed;
-    public float rotationSpeed;
     public float minRotation = 270 - 70;
     public float maxRotation = 270 + 70;
 
