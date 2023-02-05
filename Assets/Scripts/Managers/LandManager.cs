@@ -25,6 +25,9 @@ public class LandManager : MonoBehaviour
     public GameObject evilAlien2;
 
     private void Start() {
+        if (NextLevelManager.color.HasValue) {
+            color = NextLevelManager.color.Value;
+        }
         trees1.color = color;
         Color darkerColor = DarkenColor(color);
         trees2.color = darkerColor;

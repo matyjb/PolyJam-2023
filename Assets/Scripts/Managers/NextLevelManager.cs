@@ -7,6 +7,7 @@ public class NextLevelManager : MonoBehaviour
 {
     public static int currentLevel = 0;
     public static GameModes? nextGameMode = null;
+    public static Color? color = null;
 
     private void Start() {
         currentLevel++;
