@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
     public static GameController instance;
@@ -10,6 +12,8 @@ public class GameController : MonoBehaviour {
 
     [Header("Settings")]
     public GameModes gameMode;
+    public float energyDepletionPerSec = 1;
+    public float maxEnergyLevel = 100;
 
     [Header("Managers")]
     public PlayerMovement playerMovement;
@@ -21,11 +25,13 @@ public class GameController : MonoBehaviour {
     public Transform startScenePosition;
     public Transform rootBall;
     public SpriteRenderer whiteBlink;
+    public TextMeshProUGUI energyText;
 
     [HideInInspector]
     public Player mainPlayer;
 
     private void Start() {
+        NextLevelManager.currentEnergyLevel = maxEnergyLevel;
         if (NextLevelManager.nextGameMode.HasValue) {
             gameMode = NextLevelManager.nextGameMode.Value;
         }
@@ -41,7 +47,7 @@ public class GameController : MonoBehaviour {
                     LeanTween.delayedCall(1.9f, () => {
                         mainPlayer = playerMovement.SpawnFirstRoot();
                     });
-                    
+
                 });
                 rootBall.LeanMove(new Vector3(0, 1.35f, 0), 0.4f).setEaseInCirc().setDelay(2.8f).setOnComplete(() => {
                     rootBall.gameObject.SetActive(false);
@@ -58,6 +64,18 @@ public class GameController : MonoBehaviour {
                 mainPlayer = playerMovement.SpawnFirstRoot();
                 break;
         }
+    }
+
+    private void Update() {
+        if (mainPlayer != null) {
+            NextLevelManager.currentEnergyLevel -= energyDepletionPerSec * Time.deltaTime;
+            NextLevelManager.currentEnergyLevel = Mathf.Max(Mathf.Min(NextLevelManager.currentEnergyLevel, maxEnergyLevel), 0);
+            energyText.text = "Energy: " + NextLevelManager.currentEnergyLevel.ToString("N2");
+        }
+    }
+
+    public void GainEnergy(int amount = 1) {
+        NextLevelManager.currentEnergyLevel += amount;
     }
 }
 
