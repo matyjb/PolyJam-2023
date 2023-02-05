@@ -90,18 +90,21 @@ public class Player : MonoBehaviour {
                 Split();
             } else if (pickup.CompareTag("core")) {
                 GameController.instance.playerMovement.players.Remove(this);
-                Destroy(rig2d);
+                if (withDestroy)
+                    Destroy(rig2d);
                 // TODO: next planet
             }
         }
 
         if (pickup.CompareTag("rock")) {
             GameController.instance.playerMovement.players.Remove(this);
-            Destroy(rig2d);
+            if (withDestroy)
+                Destroy(rig2d);
             // TODO: show end screen
         } else if (pickup.CompareTag("energy")) {
             // TODO: picked up energy, what now?
-            PickupManager.instance.DestroyPickup(pickup);
+            if (withDestroy)
+                PickupManager.instance.DestroyPickup(pickup);
         }
 
 

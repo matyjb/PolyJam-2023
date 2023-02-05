@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
-{
+public class GameController : MonoBehaviour {
     public static GameController instance;
     private void Awake() {
         instance = this;
@@ -21,15 +20,17 @@ public class GameController : MonoBehaviour
     public Transform startScenePosition;
     public Transform rootBall;
 
+    public Player mainPlayer;
+
     private void Start() {
         switch (gameMode) {
             case GameModes.Debug:
-                playerMovement.SpawnFirstRoot();
+                mainPlayer = playerMovement.SpawnFirstRoot();
                 break;
             case GameModes.FirstPlanet:
                 virtualCamera.Follow = startScenePosition;
                 startScenePosition.LeanMoveLocalY(6.4f, 3f).setOnComplete(() => {
-                    playerMovement.SpawnFirstRoot();
+                    mainPlayer = playerMovement.SpawnFirstRoot();
                 });
                 rootBall.LeanMove(new Vector3(0, 1.35f, 0), 0.4f).setEaseInCirc().delay = 2.8f;
                 break;
