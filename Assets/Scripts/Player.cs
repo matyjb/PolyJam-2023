@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
     [Header("Prefabs")]
     public GameObject Root;
+    public GameObject coreRoot;
 
     [HideInInspector]
     public bool isMain = false;
@@ -93,9 +95,23 @@ public class Player : MonoBehaviour {
                 GameController.instance.playerMovement.players.Remove(this);
                 if (withDestroy)
                     Destroy(rig2d);
-                SceneManager.LoadScene("CompletePlanet");
+
+                // spawn small roots around
+                int smallRootsCount = 8;
+                float distance = -0.3f;
+                float angle = 360f / (smallRootsCount - 1);
+                for (int i = 0; i < smallRootsCount; i++) {
+                    var root = Instantiate(coreRoot);
+                    root.transform.position = pickup.transform.position + (Vector3)Helpers.RadianToCartesianCoords(distance, angle * i);
+                    root.transform.rotation = Quaternion.Euler(0, 0, angle * i - 90);
+                }
+
+                // add delay to this
+                StartCoroutine(LoadSceneCompletePlanetCorutine());
             }
         }
+
+
 
         if (pickup.CompareTag("rock")) {
             GameController.instance.playerMovement.players.Remove(this);
@@ -110,6 +126,11 @@ public class Player : MonoBehaviour {
         }
 
 
+    }
+
+    IEnumerator LoadSceneCompletePlanetCorutine() {
+        yield return new WaitForSeconds(1.2f);
+        SceneManager.LoadScene("CompletePlanet");
     }
 
     void SpawnSmallRoots() {

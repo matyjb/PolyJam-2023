@@ -529,6 +529,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4327142040490836359, guid: 1bd4399d6008f4d4e9456c9a7fb8f753, type: 3}
     - target: {fileID: 2686740407525751392, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
+      propertyPath: coreRoot
+      value: 
+      objectReference: {fileID: 6149853474312321754, guid: c435d2b124d5f1a4091f8f98d6df2b3c, type: 3}
+    - target: {fileID: 2686740407525751392, guid: 1cf9e099cd71b4a32b9c32ee6f82340f, type: 3}
       propertyPath: belowTrail
       value: 
       objectReference: {fileID: 7672174605533362337}

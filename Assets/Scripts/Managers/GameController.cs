@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour {
 
                 // White blink
                 LeanTween.value(whiteBlink.gameObject, new Color(0, 0, 0, 0), new Color(0, 0, 0, 0.35f), 1.2f).setDelay(timeToHit - 1.2f).setOnComplete(() => {
-                    AudioManager.instance.PlayGamePlayMusic();
+                    AudioManager.instance?.PlayGamePlayMusic();
                     whiteBlink.color = Color.white;
                     landManager.ChangeEvil(true);
                     LeanTween.value(whiteBlink.gameObject, Color.white, new Color(255, 255, 255, 0), 2f).delay = 0.5f;
@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour {
 
     private void Update() {
         if (mainPlayer != null) {
-            NextLevelManager.currentEnergyLevel -= energyDepletionPerSec * Time.deltaTime;
+            NextLevelManager.currentEnergyLevel -= energyDepletionPerSec * Time.deltaTime * (1 + NextLevelManager.currentLevel * 0.05f);
             NextLevelManager.currentEnergyLevel = Mathf.Max(Mathf.Min(NextLevelManager.currentEnergyLevel, maxEnergyLevel), 0);
             if (NextLevelManager.currentEnergyLevel >= 10) {
                 winieta.alpha = 0;
