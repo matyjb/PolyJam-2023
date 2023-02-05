@@ -91,6 +91,17 @@ public class GameController : MonoBehaviour {
                 winieta.alpha = 1 - NextLevelManager.currentEnergyLevel / 10f;
             }
             energyText.text = "Energy: " + NextLevelManager.currentEnergyLevel.ToString("N2");
+
+            // Switch graphic
+            if (NextLevelManager.currentEnergyLevel >= 15f) {
+                mainPlayer.upperTrail.material = mainPlayer.upperTrailMax;
+            } else if (NextLevelManager.currentEnergyLevel >= 8f) {
+                mainPlayer.upperTrail.material = mainPlayer.upperTrailMain;
+            } else if (NextLevelManager.currentEnergyLevel > 0.2f) {
+                mainPlayer.upperTrail.material = mainPlayer.upperTrailMin;
+            } else {
+                mainPlayer.upperTrail.material = mainPlayer.upperTrailDead;
+            }
         }
     }
 

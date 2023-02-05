@@ -28,6 +28,11 @@ public class Player : MonoBehaviour {
     public Material upperTrailNonMain;
     public Material belowTrailNonMain;
 
+    [Header("Variable trails")]
+    public Material upperTrailMax;
+    public Material upperTrailMin;
+    public Material upperTrailDead;
+
     // Fake rotate
     float fakeRotateTime = 0;
     float nextFakeRotateStart;
